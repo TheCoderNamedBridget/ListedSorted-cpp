@@ -19,6 +19,11 @@ bool isSorted(const int list[], int size)
         cout<<"List of size 0 is NOT valid :("<<endl;
         return false;
     }
+    if ( size == 1 )
+    {
+        cout<<"The list is already sorted"<<endl;
+        return true;
+    }
     int previousNum = list[0];
     
     for (int i = 0; i < size; i ++ )
@@ -44,57 +49,25 @@ int main()
     int sizeOfList;
     cin>>sizeOfList;
     cout<<endl<<"Enter list: ";
-    string listOfNums;
-    cin>>listOfNums;
+    int listOfNums;
+    
+    
+    
     listOfNums + " ";
-    int indexToInsertAt = 0;
-    int indexx = 0;
-
-    int startingIndex = 0;
-    int endingIndex = 1;
-    
-    //cout<<"here1 "+ listOfNums.size()<<" Anything show?"<<endl;
-    
-    if ( sizeOfList != 1 && sizeOfList <= 100 )
+    int numsAdded = 0;
+    while ( numsAdded != sizeOfList )
     {
-        for ( int i = 0; i < sizeOfList; i++ )
-        {
-            cout<<"here starting"<<startingIndex<<"endingIndex "<<endingIndex<<" size of list "<<sizeOfList<<endl;
-            
-            
-            if ( indexToInsertAt <= sizeOfList  )
-            {
-                string substring = listOfNums.substr( startingIndex, endingIndex); 
-                char letterN = substring[endingIndex + 1];
-                cout<<"here2 starting "<<startingIndex<<" ending "<<endingIndex<<" String "<<substring<< ". ["<<listOfNums<<"]"<<endl;
-                
-                if ( endingIndex == sizeOfList - 1 || substring[endingIndex + 1] == ' '  )
-                {
-                    cout<<"here3"<<endl;
-                    stringstream geek(substring); 
-                    int convertedSubstring;
-                    geek>> convertedSubstring;
-                    cout<<"convertedSubstring"<<convertedSubstring<<"."<<endl;
-                    numList[indexToInsertAt] = convertedSubstring;
-                    indexToInsertAt += 1;
-                    
-                    startingIndex = endingIndex;
-                    endingIndex += 1;
-                }
-                else 
-                {
-                    cout<<"here4"<<endl;
-                    endingIndex+= 1;
-                }
-            }
-        }
-        cout<<"size of list: "<<sizeOfList<<" "<<indexToInsertAt<<endl;
-
+        
+        cin>>listOfNums;
+        numList[numsAdded] = listOfNums;
+        numsAdded+= 1;
     }
+
     
-    isSorted( numList, indexToInsertAt + 1 );
+    isSorted( numList, sizeOfList );
     return 0;
 }
+
 
 
 
